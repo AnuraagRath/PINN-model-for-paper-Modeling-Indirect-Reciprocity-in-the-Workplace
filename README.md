@@ -369,5 +369,5 @@ No GPU is required; all computations run on CPU.
 
 ---
 
-*Implemented by: [Your Name] | Contact: [your@email.com]*
+*Implemented by: Anuraag Rath | Contact: rathanuraag@gmail.com*
 *Model source: Rath (2025) | Solver: PyTorch PINNs | License: MIT*
