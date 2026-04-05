@@ -32,7 +32,8 @@
 9. [Bifurcation and Stability Analysis](#bifurcation-and-stability-analysis)
 10. [Running the Code](#running-the-code)
 11. [Dependencies](#dependencies)
-12. [References](#references)
+12. [Disclaimer](#disclaimer)
+13. [References](#references)
 
 ---
 
