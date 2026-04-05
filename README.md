@@ -360,6 +360,34 @@ No GPU is required; all computations run on CPU.
 
 ---
 
+## Disclaimer
+
+**On training budget:** The PINN models in this repository were trained with a
+reduced budget (4,000 epochs, 800 collocation points) to accommodate computational
+constraints during development. Final training losses of `~2e-02` to `~2e-01` are
+higher than the `<1e-03` threshold expected of a fully converged PINN for a smooth
+2D ODE system. The results are qualitatively correct and faithfully reproduce the
+dynamics described in the paper, but should not be treated as high-precision
+numerical solutions. Running `pinn_solver.py` with `epochs=20000` and
+`n_col=2000` on a local machine will yield significantly tighter convergence.
+
+**On the mean-field approximation:** The full model in Rath (2025) is an
+$n$-agent coupled ODE system. This implementation solves a 2D mean-field
+reduction that assumes homogeneous agents and uniform interactions. While this
+captures all qualitative dynamics of interest — multiple equilibria, cooperative
+bootstrapping, and bifurcation structure — it does not capture agent-level
+heterogeneity or network topology effects present in the full model.
+
+**On scope:** The parameter values used correspond to the stable cooperative
+regime (Table 1 of the paper). The defective equilibrium, bifurcation boundaries,
+and parameter sensitivity analysis described in the paper have not been
+computationally explored in this repository.
+
+The code is provided as-is under the MIT License, with no guarantees of
+numerical accuracy beyond what is described above.
+
+---
+
 ## References
 
 - **Rath (2025)** — *"Indirect Reciprocity, Reputation, and Cooperation in Workplace Networks"*. The primary paper modeled in this repository.
