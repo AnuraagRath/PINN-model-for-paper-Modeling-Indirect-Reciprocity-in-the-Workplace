@@ -228,11 +228,11 @@ All weights are initialized with **Xavier normal initialization** and biases set
 
 The total training loss is a weighted sum of two terms:
 
-$$\mathcal{L}(\theta) = \mathcal{L}_{\text{physics}} + 20 \cdot \mathcal{L}_{\text{IC}}$$
+$$\mathcal{L}(\theta) = \mathcal{L}_{\text{Φ}} + 20 \cdot \mathcal{L}_{\text{IC}}$$
 
-**Physics residual loss** — evaluated at $N_c = 800$ randomly sampled collocation points per epoch:
+**Φ residual loss** — evaluated at $N_c = 800$ randomly sampled collocation points per epoch:
 
-$$\mathcal{L}_{\text{physics}} = \frac{1}{N_c}\sum_{k=1}^{N_c} \left[\left(\frac{d\hat{R}}{dt}\bigg|_{t_k} - f_R(\hat{R}_k, \hat{S}_k)\right)^2 + \left(\frac{d\hat{S}}{dt}\bigg|_{t_k} - f_S(\hat{R}_k, \hat{S}_k)\right)^2\right]$$
+$$\mathcal{L}_{\text{Φ}} = \frac{1}{N_c}\sum_{k=1}^{N_c} \left[\left(\frac{d\hat{R}}{dt}\bigg|_{t_k} - f_R(\hat{R}_k, \hat{S}_k)\right)^2 + \left(\frac{d\hat{S}}{dt}\bigg|_{t_k} - f_S(\hat{R}_k, \hat{S}_k)\right)^2\right]$$
 
 where $f_R$ and $f_S$ are the right-hand sides of the two ODEs.
 
@@ -244,7 +244,7 @@ The weight of 20 on the IC term reflects the importance of anchoring the traject
 
 ### Automatic Differentiation
 
-The time derivatives in $\mathcal{L}_{\text{physics}}$ are computed using PyTorch's `autograd` engine:
+The time derivatives in $\mathcal{L}_{\text{Φ}}$ are computed using PyTorch's `autograd` engine:
 
 ```python
 dR = torch.autograd.grad(R_hat, t_col, torch.ones_like(R_hat), create_graph=True)[0]
